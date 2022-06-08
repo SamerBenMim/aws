@@ -1,9 +1,0 @@
-{
-  "resourceName": "dino",
-  "policyUUID": "8b358503",
-  "bucketName": "awsae149343c7ef4cc3b1089b46b006830e",
-  "storageAccess": "authAndGuest",
-  "guestAccess": [],
-  "authAccess": [],
-  "groupAccess": {}
-}

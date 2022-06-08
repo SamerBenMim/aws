@@ -13,11 +13,12 @@ const App = (props) => {
   const [username, setusername] = useState("")
   const [formState, setFormState] = useState(initialState)
   const [todos, setTodos] = useState([])
-  const [role, setrole] = useState([])
+  const [role, setrole] = useState("default")
 
   useEffect(() => {
     fetchTodos()
-    Auth.currentAuthenticatedUser().then(user=>{console.log(user);setusername(user.username);setrole(user.signInUserSession.accessToken.payload['cognito:groups'][0])})
+    Auth.currentAuthenticatedUser().then(user=>{console.log(user);setusername(user.username);
+      if(user.signInUserSession.accessToken.payload['cognito:groups'])setrole(user.signInUserSession.accessToken.payload['cognito:groups'][0])})
   }, [])
 
   function setInput(key, value) {
@@ -29,7 +30,7 @@ const App = (props) => {
       const todoData = await API.graphql(graphqlOperation(listTodos))
       const todos = todoData.data.listTodos.items
       setTodos(todos)
-    } catch (err) { console.log(err.errors[0].message) }
+    } catch (err) { console.log(err) }
   }
 
   async function addTodo() {
@@ -46,7 +47,7 @@ const App = (props) => {
 
   return (
     <div style={styles.container}>
-      <h1>Hi {username}</h1>
+      <h1 className='bg-white shadow-xl rounded px-12 pt-6 pb-8 mb-4'>Hi {username}</h1>
       <h2>group : {role}</h2>
       <h2>Amplify Todos</h2>
       <input

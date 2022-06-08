@@ -52,5 +52,7 @@
       "overrides": true
     }
   },
-  "debug": {}
+  "debug": {
+    "shareProjectConfig": false
+  }
 }

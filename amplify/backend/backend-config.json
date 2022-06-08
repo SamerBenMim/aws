@@ -62,13 +62,25 @@
               "userPoolId": "authaws7a6354bb"
             }
           },
-          "additionalAuthenticationProviders": []
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "API_KEY",
+              "apiKeyConfig": {
+                "apiKeyExpirationDays": 7,
+                "apiKeyExpirationDate": "2022-06-15T22:18:33.670Z",
+                "description": ""
+              }
+            },
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ]
         }
       }
     }
   },
   "storage": {
-    "dino": {
+    "s3a94eed6d": {
       "service": "S3",
       "providerPlugin": "awscloudformation",
       "dependsOn": []
