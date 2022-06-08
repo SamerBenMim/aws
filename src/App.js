@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
-import Amplify, { API, graphqlOperation } from 'aws-amplify'
+import Amplify, { API, Auth, graphqlOperation } from 'aws-amplify'
 import { createTodo } from './graphql/mutations'
 import { listTodos } from './graphql/queries'
 
@@ -9,13 +9,15 @@ import awsExports from "./aws-exports";
 Amplify.configure(awsExports);
 
 const initialState = { name: '', description: '' }
-
-const App = () => {
+const App = (props) => {
+  const [username, setusername] = useState("")
   const [formState, setFormState] = useState(initialState)
   const [todos, setTodos] = useState([])
+  const [role, setrole] = useState([])
 
   useEffect(() => {
     fetchTodos()
+    Auth.currentAuthenticatedUser().then(user=>{console.log(user);setusername(user.username);setrole(user.signInUserSession.accessToken.payload['cognito:groups'][0])})
   }, [])
 
   function setInput(key, value) {
@@ -44,6 +46,8 @@ const App = () => {
 
   return (
     <div style={styles.container}>
+      <h1>Hi {username}</h1>
+      <h2>group : {role}</h2>
       <h2>Amplify Todos</h2>
       <input
         onChange={event => setInput('name', event.target.value)}

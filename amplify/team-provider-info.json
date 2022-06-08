@@ -13,7 +13,8 @@
     },
     "categories": {
       "auth": {
-        "aws7a6354bb": {}
+        "aws7a6354bb": {},
+        "true": {}
       }
     }
   }
