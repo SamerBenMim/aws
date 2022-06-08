@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "aws",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/home/samer/Desktop/aws/amplify/amplify/backend/api/aws/schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authaws7a6354bb"
+    }
+  }
+}
